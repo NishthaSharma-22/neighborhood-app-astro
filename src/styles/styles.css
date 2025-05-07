@@ -1,77 +1,114 @@
-body {
+body,
+html {
   margin: 0;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  background-color: antiquewhite;
-  color: black;
+  padding: 0;
+  height: 100%;
+  font-family: "Courier New", monospace;
+  color: white;
+  background: black;
+
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+.stars {
+  background: url("https://www.transparenttextures.com/patterns/stardust.png")
+    repeat;
+  z-index: 0;
+}
+
+.twinkling {
+  background: url("https://www.transparenttextures.com/patterns/tiny-grid.png")
+    repeat;
+  animation: moveTwinkling 200s linear infinite;
+  z-index: 1;
+}
+.stars,
+.twinkling {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+@keyframes moveTwinkling {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
 }
 .container {
-  max-width: 1400 px;
-  margin: auto;
-  padding: 0 25 px;
-}
-.site-title {
+  z-index: 2;
+  position: relative;
   text-align: center;
-  font-weight: bold;
-  font-size: 48px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.site-tagline {
-  text-align: center;
-  font-size: 22px;
-  opacity: 0.7;
-  margin-bottom: 40px;
-  position: fixed;
-  top: 55%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* posts and cards stuff------------------------- */
-.posts {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-gap: 20px;
-}
-.link {
-  display: block;
-  background-color: burlywood;
-  border-radius: 19px;
-  overflow: hidden;
-}
-.footer {
-  text-align: center;
-  padding: 20px;
-  font-size: 16px;
-  opacity: 0.5;
-}
-.link-img {
-  width: 100%;
-
-  transition: transform 0.07s, filter 0.1s, opacity 0.15s;
-}
-/* .link-img:hover{
-    filter: drop-shadow(3px 3px 5px rgba(0,0,0,0.17));
-    transform: scale(1.02);
-} */
-
-.scroll-controls {
+  color: white;
+  padding: 4rem 1rem;
+  height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  justify-content: space-evenly;
-  margin-top: 1rem;
+  align-items: center;
+  background: transparent;
+  box-sizing: border-box;
 }
-.button {
-  padding: 0.5rem 1 rem;
-  background-color: rgb(114, 87, 87);
-  color: whitesmoke;
-  border: none;
-  border-radius: 6px;
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: black;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgb(11, 11, 180);
+  border-radius: 10px;
+}
+
+.title {
+  font-size: 3rem;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  min-height: 1.5rem;
+}
+
+.start-button {
+  background-color: black;
+  color: white;
+  padding: 1rem 2rem;
+  border: 2px dashed white;
+  border-radius: 0.2rem;
+  font-size: 1rem;
   cursor: pointer;
-  font-size: 25px;
+  transform: all 0.3s ease;
 }
-.button:hover {
-  background-color: rgb(156, 125, 125);
+
+.start-button:hover {
+  background-color: rgb(62, 58, 58);
+  transform: scale(1.1);
+  box-shadow: 0 5px 0 5px white;
+}
+
+.down-arrow {
+  font-size: 6rem;
+  margin-top: 2rem;
+  animation: bounce 2s infinte;
+  cursor: pointer;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
 }
