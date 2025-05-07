@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Planetary Day Progress</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", sans-serif;
+        background: #0c0c0c;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        text-align: center;
+        max-width: 90%;
+      }
+
+      .planet-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 1rem 0;
+        width: 100%;
+      }
+
+      .planet-name {
+        font-size: 1.3rem;
+        width: 50%;
+        text-align: left;
+        margin-bottom: 0.3rem;
+      }
+
+      .bar-bg {
+        width: 50%;
+        height: 30px;
+        background-color: #333;
+        border-radius: 20px;
+        overflow: hidden;
+        margin-bottom: 0.3rem;
+      }
+
+      .bar-fill {
+        height: 100%;
+        background: linear-gradient(to right, #00f0ff, #0099ff);
+        transition: width 0.5s ease-in-out;
+      }
+
+      .time-left {
+        font-size: 0.9rem;
+        color: #ccc;
+        width: 50%;
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      ☀️ If you woke up at 7:00 AM, here's how much of the day has passed:
+    </h1>
+
+    <div class="planet-container">
+      <div class="planet-name">🌍 Earth</div>
+      <div class="bar-bg"><div class="bar-fill" id="earth-bar"></div></div>
+      <div class="time-left" id="earth-time-left"></div>
+    </div>
+
+    <div class="planet-container">
+      <div class="planet-name">🪐 Jupiter</div>
+      <div class="bar-bg"><div class="bar-fill" id="jupiter-bar"></div></div>
+      <div class="time-left" id="jupiter-time-left"></div>
+    </div>
+
+    <div class="planet-container">
+      <div class="planet-name">Mercury</div>
+      <div class="bar-bg"><div class="bar-fill" id="mercury-bar"></div></div>
+      <div class="time-left" id="mercury-time-left"></div>
+    </div>
+
+    <div class="planet-container">
+      <div class="planet-name">Venus</div>
+      <div class="bar-bg"><div class="bar-fill" id="venus-bar"></div></div>
+      <div class="time-left" id="venus-time-left"></div>
+    </div>
+
+    <div class="planet-container">
+      <div class="planet-name">Mars</div>
+      <div class="bar-bg"><div class="bar-fill" id="mars-bar"></div></div>
+      <div class="time-left" id="mars-time-left"></div>
+    </div>
+
+    <div class="planet-container">
+      <div class="planet-name">Saturn</div>
+      <div class="bar-bg"><div class="bar-fill" id="saturn-bar"></div></div>
+      <div class="time-left" id="saturn-time-left"></div>
+    </div>
+
+    <div class="planet-container">
+      <div class="planet-name">Uranus</div>
+      <div class="bar-bg"><div class="bar-fill" id="uranus-bar"></div></div>
+      <div class="time-left" id="uranus-time-left"></div>
+    </div>
+
+    <div class="planet-container">
+      <div class="planet-name">Neptune</div>
+      <div class="bar-bg"><div class="bar-fill" id="neptune-bar"></div></div>
+      <div class="time-left" id="neptune-time-left"></div>
+    </div>
+
+    <script>
+      const wakeUpHour = 7; // 7:00 AM
+
+      const planetData = [
+        {
+          name: "Earth",
+          durationHours: 24,
+          barId: "earth-bar",
+          timeLeftId: "earth-time-left",
+        },
+        {
+          name: "Jupiter",
+          durationHours: 9.93,
+          barId: "jupiter-bar",
+          timeLeftId: "jupiter-time-left",
+        },
+        {
+          name: "Mercury",
+          durationHours: 1408,
+          barId: "mercury-bar",
+          timeLeftId: "mercury-time-left",
+        },
+        {
+          name: "Venus",
+          durationHours: 5832,
+          barId: "venus-bar",
+          timeLeftId: "venus-time-left",
+        },
+
+        {
+          name: "Mars",
+          durationHours: 25,
+          barId: "mars-bar",
+          timeLeftId: "mars-time-left",
+        },
+        {
+          name: "Saturn",
+          durationHours: 11,
+          barId: "saturn-bar",
+          timeLeftId: "saturn-time-left",
+        },
+        {
+          name: "Uranus",
+          durationHours: 17,
+          barId: "uranus-bar",
+          timeLeftId: "uranus-time-left",
+        },
+        {
+          name: "Neptune",
+          durationHours: 16,
+          barId: "neptune-bar",
+          timeLeftId: "neptune-time-left",
+        },
+      ];
+
+      function updateProgress() {
+        const now = new Date();
+        const currentHour =
+          now.getHours() + now.getMinutes() / 60 + now.getSeconds() / 3600;
+        let timeSinceWake = currentHour - wakeUpHour;
+
+        if (timeSinceWake < 0) timeSinceWake += 24; // handle post-midnight cases
+
+        planetData.forEach((planet) => {
+          const { durationHours, barId, timeLeftId } = planet;
+          const percent = Math.min((timeSinceWake / durationHours) * 100, 100);
+          const remaining = Math.max(durationHours - timeSinceWake, 0);
+          const hrs = Math.floor(remaining);
+          const mins = Math.floor((remaining - hrs) * 60);
+
+          const bar = document.getElementById(barId);
+          bar.style.width = `${percent}%`;
+          document.getElementById(
+            timeLeftId
+          ).textContent = `${hrs}h ${mins}m left in the day`;
+        });
+      }
+
+      updateProgress();
+      setInterval(updateProgress, 1000); // update every second
+    </script>
+
+    <footer>&copy; 2025</footer>
+  </body>
+</html>

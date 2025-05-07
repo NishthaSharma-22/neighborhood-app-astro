@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Did I really do that?</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f5b9c3; /* fallback for old browsers */
+        background: -webkit-linear-gradient(
+          to right,
+          #f7b1bd,
+          #edc7b1
+        ); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(
+          to right,
+          #f9d1d8,
+          #ffc3a0
+        ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        color: #333;
+        padding: 2rem;
+        max-width: 600px;
+        margin: auto;
+        font-weight: 200;
+        font-size: larger;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 0.5rem;
+      }
+
+      #meter {
+        text-align: center;
+        font-size: 1.2rem;
+        background: whitesmoke;
+        padding: 0.75rem;
+        border-radius: 10px;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 2px rgb(130, 95, 95);
+      }
+      .task {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+        padding: 0.5rem;
+        background: rgb(246, 245, 243);
+        border-radius: 0.2rem;
+        box-shadow: 0 1px rgba(175, 134, 134, 0.781);
+      }
+      .task:hover {
+        background: rgba(253, 165, 185, 0.716);
+      }
+      .task input {
+        margin-right: 1rem;
+        transform: scale(1.2);
+      }
+      .fade {
+        transition: all0 0.3s ease-in-out;
+      }
+
+      .red-alert {
+        color: #ff4d4d !important;
+
+        font-weight: bold;
+      }
+      .orange-alert {
+        color: orange;
+      }
+      .yellow-alert {
+        color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🧠 Did I Really Do That?</h1>
+    <div id="meter">Embarrassment Level: 0 🫣</div>
+
+    <div id="taskList">
+      <label class="task fade">
+        <input type="checkbox" onchange="updateMeter(this)" />
+        Waved back at someone who wasn’t waving at me
+      </label>
+      <label class="task fade">
+        <input type="checkbox" onchange="updateMeter(this)" />
+        Googled “Do fish get thirsty?”
+      </label>
+      <label class="task fade">
+        <input type="checkbox" onchange="updateMeter(this)" />
+        Opened the fridge, forgot why, closed it
+      </label>
+      <label class="task fade">
+        <input type="checkbox" onchange="updateMeter(this)" />
+        Had a full argument in the shower with someone who wasn't there
+      </label>
+      <label class="task fade">
+        <input type="checkbox" onchange="updateMeter(this)" />
+        Made a sound like “hmmm” and felt wise
+      </label>
+      <label class="task fade">
+        <input type="checkbox" onchange="updateMeter(this)" />
+        Said “you too” when the waiter said “enjoy your meal”
+      </label>
+      <label class="task fade">
+        <input type="checkbox" onchange="updateMeter(this)" />
+        👋 Waved back at someone who wasn’t waving at me
+      </label>
+      <label class="task fade">
+        <input type="checkbox" onchange="updateMeter(this)" />
+        📱 Typed "You too" when someone texted "Happy Birthday!"
+      </label>
+      <label class="task fade">
+        <input type="checkbox" onchange="updateMeter(this)" />
+        😬 Pretended to text while avoiding someone I know
+      </label>
+      <label class="task fade">
+        <input type="checkbox" onchange="updateMeter(this)" />
+        🔁 Opened Instagram, forgot why, closed it, opened it again
+      </label>
+      <label class="task fade">
+        <input type="checkbox" onchange="updateMeter(this)" />
+        🤔 Said "What?" and then understood the sentence before they repeated it
+      </label>
+      <label class="task fade">
+        <input type="checkbox" onchange="updateMeter(this)" />
+        🧊 Looked at the fridge 4 times as if snacks would respawn
+      </label>
+      <label class="task fade">
+        <input type="checkbox" onchange="updateMeter(this)" />
+        😂 Laughed at a joke I didn’t understand because everyone else was
+        laughing
+      </label>
+      <label class="task fade">
+        <input type="checkbox" onchange="updateMeter(this)" />
+        🚿 Rehearsed entire conversations in the shower
+      </label>
+      <label class="task fade">
+        <input type="checkbox" onchange="updateMeter(this)" />
+        🎤 Forgot to mute on a call… said something… and instantly regretted it
+      </label>
+      <label class="task fade">
+        <input type="checkbox" onchange="updateMeter(this)" />
+        😵 Walked into a room and stood there like a confused sim
+      </label>
+      <label class="task fade">
+        <input type="checkbox" onchange="updateMeter(this)" />
+        🎬 Said “you too” when the cashier said “Enjoy the movie”
+      </label>
+    </div>
+
+    <script>
+      let embarrassment = 0;
+      const meter = document.getElementById("meter");
+
+      function updateMeter(checkbox) {
+        embarrassment += checkbox.checked ? 1 : -1;
+        meter.textContent = `Embarrassment Level: ${embarrassment} 🫣`;
+      }
+    </script>
+  </body>
+</html>

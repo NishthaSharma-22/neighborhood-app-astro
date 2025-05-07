@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>weight on diff planets</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>planet weight scales</h1>
+      <label for="earth-weight">your weight on earth:</label>
+      <input type="number" id="earth-weight" placeholder="e.g. 50" />
+      <button onclick="calculateWeight()">Calculate</button>
+
+      <div class="scales">
+        <div class="planet-scale" id="earth-scale">
+          <svg viewBox="0 0 200 100">
+            <path
+              d="M10, 100 A90, 90 0 0 1 190, 100"
+              stroke="#00f0ff"
+              stroke-width="15"
+              fill="none"
+            />
+            <path
+              id="earth-arc"
+              d="M10, 100 A90, 90 0 0 1 190, 100"
+              stroke="#00ff88"
+              stroke-dasharray="282.74"
+              fill="none"
+              stroke-dashoffset="282.74"
+            />
+          </svg>
+          <div class="label">
+            Earth
+            <span id="earth-weight-display">-- kg</span>
+          </div>
+
+          <div class="planet-scale" id="mercury-scale">
+            <svg viewBox="0 0 200 100">
+              <path
+                d="M10,100 A90,90 0 0 1 190,100"
+                stroke="#aaa"
+                stroke-width="15"
+                fill="none"
+              />
+              <path
+                id="mercury-arc"
+                d="M10,100 A90,90 0 0 1 190,100"
+                stroke="#ffcc00"
+                stroke-width="15"
+                fill="none"
+                stroke-dasharray="282.74"
+                stroke-dashoffset="282.74"
+              />
+            </svg>
+            <div class="label">
+              Mercury <br /><span id="mercury-weight-display">-- kg</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JS!!!!! -->
+    <script>
+      function calculateWeight() {
+        const weight = parseFloat(
+          document.getElementById("earth-weight").value
+        );
+        if (isNan(weight) || weight <= 0) {
+          alert("Please enter a valid weight");
+          return;
+        }
+        const arcLength = 282.74;
+
+        //EARTH STUFF GOES HERE BRO:
+        const earthWeight = weight;
+        document.getElementById(
+          "earth-weight-display"
+        ).textContent = `${earthWeight.toFixed(1)} kg`;
+        const earthOffset = arcLength - (earthWeight / 150) * arcLength; // assuming the max a homo sapien can weigh is 150
+        document.getElementById("earth-arc").style.strokeDashoffset =
+          earthOffset;
+
+        //mercury
+        const mercuryWeight = weight * 0.38;
+        document.getElementById(
+          "mercury-weight-display"
+        ).textContent = `${mercuryWeight.toFixed(1)} kg`;
+        const mercuryOffset = arcLength - (mercuryWeight / 150) * arcLength; // assuming the max a homo sapien can weigh is 150
+        document.getElementById("mercury-arc").style.strokeDashoffset =
+          earthOffset;
+      }
+    </script>
+  </body>
+</html>

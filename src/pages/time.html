@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section>
+      <h1>🌍 Earth Clock</h1>
+      <div class="clock" id="earth-clock">--:--:--</div>
+    </section>
+
+    <section>
+      <h1>🪐 Jupiter Clock</h1>
+      <div class="clock" id="jupiter-clock">--:--:--</div>
+    </section>
+
+    <script>
+      // Earth clock – ticks every real second
+      function updateEarthClock() {
+        const now = new Date();
+        document.getElementById("earth-clock").textContent =
+          now.toLocaleTimeString();
+      }
+
+      setInterval(updateEarthClock, 1000);
+      updateEarthClock();
+
+      // Jupiter clock – ticks slower (exaggerated here)
+      let jupiterTime = new Date();
+      function updateJupiterClock() {
+        jupiterTime = new Date(jupiterTime.getTime() + 700); // 700ms instead of 1000ms
+        document.getElementById("jupiter-clock").textContent =
+          jupiterTime.toLocaleTimeString();
+      }
+
+      setInterval(updateJupiterClock, 1000);
+      updateJupiterClock();
+    </script>
+  </body>
+</html>
