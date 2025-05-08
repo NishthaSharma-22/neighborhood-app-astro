@@ -1,10 +1,22 @@
 body {
-  overflow: hidden;
-  background: radial-gradient(ellipse at bottom, #0b0f1a 0%, #000000 100%);
-  height: 200vh;
   margin: 0;
+  overflow-x: hidden;
+  background: black;
   font-family: "Orbitron", sans-serif;
 }
 .no-scrollbar::-webkit-scrollbar {
   display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.star {
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffcc, #facc15, #ea580c);
+  box-shadow: 0 0 40px #fcd34d;
+}
+.glow-text {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
 }
