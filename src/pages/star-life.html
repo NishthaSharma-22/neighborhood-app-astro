@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>life cycle of a star</title>
+    <link rel="stylesheet" href="src\styles\star.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  </head>
+  <body>
+    <body class="text-white no-scrollbar overflow-x-hidden">
+      <div class="nebula" id="partices"></div>
+
+      <!-- stage 1 -- nebula effect -->
+      <section
+        class="h-screen"
+        flex
+        flex-col
+        justify-center
+        items-center
+        text-center
+        px-4
+      >
+        <h1 class="text-5xl md:text-7xl font-bold mb-6 glow">stellar nebula</h1>
+        <p class="max-w-xl text-lg text-gray-300 mb-10">
+          a star is born from vast clouds of dust and gas collapsing under
+          gravity...
+        </p>
+        <button
+          id="condenseBtn"
+          class="bg-blue-600 hover:bg-blue-800 px-6 py-3 round-xl text-lg font-bold transition transform hover:scale-105 shadow-lg"
+        >
+          condense hydrogen
+        </button>
+        <div
+          id="condenseEffect"
+          class="mt-12 text-yellow-400 text-xl font-semibold hidden"
+        >
+          fusion initiated!
+        </div>
+      </section>
+      <script src="/src/components/star.js"></script>
+    </body>
+  </body>
+</html>
