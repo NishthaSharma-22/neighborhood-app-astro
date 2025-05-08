@@ -1,16 +1,21 @@
 gsap.registerPlugin(ScrollTrigger);
 
-//steallr nebula
+// stellar nebula
 document.getElementById("condenseBtn").addEventListener("click", () => {
   gsap.to("#condenseBtn", {
     scale: 1.1,
     backgroundColor: "#16a34a",
     duration: 0.5,
   });
+  setTimeout(function () {
+    document
+      .getElementById("protostar-sec")
+      .scrollIntoView({ behavior: "smooth" });
+  }, 3000);
   document.getElementById("condenseEffect").classList.remove("hidden");
 });
 
-//protostar section
+// protostar button
 document.getElementById("igniteBtn").addEventListener("click", () => {
   const star = document.getElementById("protoStar");
   star.classList.remove("hidden");
@@ -28,7 +33,7 @@ document.getElementById("igniteBtn").addEventListener("click", () => {
   });
 });
 
-// hydrogen depletion scroll
+// hydrogen scroll
 ScrollTrigger.create({
   trigger: "#hydrogenBar",
   start: "top bottom",
@@ -40,7 +45,7 @@ ScrollTrigger.create({
   },
 });
 
-// title and paras animation
+// titles and paras
 gsap.utils.toArray("section h1").forEach((el) => {
   gsap.from(el, {
     scrollTrigger: {
