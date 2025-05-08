@@ -3,11 +3,11 @@ html {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: "Courier New", monospace;
+  font-family: "VT323", monospace;
+
   color: white;
   background: black;
 
-  overflow-y: auto;
   scroll-behavior: smooth;
 }
 .stars {
@@ -99,7 +99,7 @@ html {
 .down-arrow {
   font-size: 6rem;
   margin-top: 2rem;
-  animation: bounce 2s infinte;
+  animation: bounce 1s infinite;
   cursor: pointer;
 }
 
@@ -111,4 +111,56 @@ html {
   50% {
     transform: translateY(10px);
   }
+}
+
+/* mission section cards and stufff */
+
+.mission-section {
+  background-color: black;
+  color: white;
+  padding: 3rem 1rem;
+  text-align: center;
+  min-height: 100vh;
+  z-index: 3;
+  position: relative;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.card {
+  background-color: #1f1f3a;
+  border: 2px dotted #8181ef;
+  border-radius: 15px;
+  padding: 1.5rem;
+  width: 250px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgb(100, 100, 243);
+}
+.card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.card button {
+  margin-top: 1rem;
+  background-color: rgb(93, 85, 85);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.card button:hover {
+  background-color: #8181ef;
 }
